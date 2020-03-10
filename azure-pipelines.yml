@@ -19,35 +19,5 @@ steps:
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     jdkArchitectureOption: 'x64'
-- task: ArtifactoryGenericUpload@1
-  inputs:
-    artifactoryService: 'Artifactory_saas'
-    specSource: 'taskConfiguration'
-    fileSpec: |
-      {
-        "files": [
-          {
-            "pattern": "target/*",
-            "target": "libs-snapshot-local/"
-          }
-        ]
-      }
-    collectBuildInfo: true
-
-- task: ArtifactoryPublishBuildInfo@1
-  inputs:
-    artifactoryService: 'Artifactory_saas'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
-- task: ArtifactoryXrayScan@1
-  inputs:
-    artifactoryService: 'Artifactory_saas'
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
-    allowFailBuild: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
-    failNoOp: true
-    tasks: 'build'
 
 
