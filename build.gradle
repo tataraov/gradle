@@ -89,13 +89,6 @@ project('api') {
             }
         }
     }
-
-    artifactoryPublish {
-        publications(publishing.publications.ivyJava)
-        properties {
-            simpleFile '**:**:**:*@*', simpleFile: 'only on settings file'
-        }
-    }
 }
 
 artifactoryPublish.skip = true
